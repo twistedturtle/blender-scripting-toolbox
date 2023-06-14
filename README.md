@@ -14,7 +14,7 @@ Keep Banner - Keeps the python banner when the python console is cleared.
 #### Track External Scripts
 Track - Keep track of external file's modification time and update the text editor. Single option for all scripts, but only applies to the active script.
 
-Autorun - When thescript is updated also run the script. Will work even if you're not in the scripting tab.
+Autorun - When the script is updated also run the script. Will work even if you're not in the scripting tab.
 
 #### Track Script Objects
 Autotrack - Automatically track objects created by the script. Next time the script is run, the objects will be deleted first.
