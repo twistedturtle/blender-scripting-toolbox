@@ -1,6 +1,6 @@
 # Scripting Toolbox
 
-Provides a few simple tools for easier scripting within blender. The controls are located in the sidebar for the text editor. In addition to the below, it also remembers the filepaths to any external scripts after the file is closed and re-opened.
+Provides a few simple tools for easier scripting within blender. The controls are located in the sidebar for the text editor. In addition to the below, it also stores the filepaths to any external scripts in the .blend file, so they're remembered when you re-open the file.
 
 #### Console Ouput
 System Console - Output to the terminal blender was started from.
