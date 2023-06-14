@@ -19,7 +19,7 @@ Autorun - When the script is updated also run the script. Will work even if you'
 #### Track Script Objects
 Autotrack - Automatically track objects created by the script. Next time the script is run, the objects will be deleted first.
 
-Keep - If you want to keep the previous objects. This is per script.
+Keep - Keep the objects from the last run of this script. This is per script.
 
 
 #### Run Script
