@@ -2,6 +2,7 @@
 import bpy
 import sys
 
+
 addon_name = "strack"
 
 # Get list of modules
@@ -25,7 +26,7 @@ def get_active_text():
 class TEXTEDITOR_PT_strack(bpy.types.Panel):
 	bl_category = "Text"
 	bl_idname = "OBJECT_PT_strack"
-	bl_label = "strack"
+	bl_label = "Scripting Toolbox"
 	bl_space_type = 'TEXT_EDITOR'
 	bl_region_type = 'UI'
 	bl_context = "text_edit"
@@ -51,11 +52,11 @@ class TEXTEDITOR_PT_strack(bpy.types.Panel):
 
 
 		self.layout.label(text="Track External Scripts")
-		self.layout.prop(context.scene.strack, "track", text="Track (global)")
+		self.layout.prop(context.scene.strack, "track", text="Track")
 
 		row = self.layout.row()
 		row.enabled = context.scene.strack.track
-		row.prop(context.scene.strack, "autorun", text="Autorun (global)")
+		row.prop(context.scene.strack, "autorun", text="Autorun")
 
 
 		if at:
@@ -64,7 +65,7 @@ class TEXTEDITOR_PT_strack(bpy.types.Panel):
 			self.layout.prop(at.strack, "keep", text="Keep (per Text)")
 
 
-		self.layout.operator(d[f"{addon_name}.strack2"].runScriptOperator.bl_idname,
+		self.layout.operator(d[f"{addon_name}.strack"].runScriptOperator.bl_idname,
 				text="Run Script", icon='PLUGIN')
 
 
