@@ -4,7 +4,7 @@ bl_info = {
 	"version": (0, 1, 0),
 	"blender": (3, 5, 1),
 	"location": "Text Editor -> Sidebar",
-	"description": "Tools for easier scripting",
+	"description": "A few simple tools for easier scripting",
 	"warning": "",
 	"doc_url": "",
 	"category": "Text Editor",
@@ -44,19 +44,6 @@ def register():
         if currentModuleName in sys.modules:
             if hasattr(sys.modules[currentModuleName], 'register'):
                 sys.modules[currentModuleName].register()
-
-
-    mods = [ "tracky" ]
-    # p = Path("/home.dm/.config/blender/3.4/scripts/modules")
-    # if p.exists():
-    for m in sys.modules:
-        if m == "tracky":
-            print(m)
-    for m in mods:
-        # f = p / m
-        # fmn = f"{__name__}.{m}"
-        if m in sys.modules:
-            importlib.reload(sys.modules[m])
 
 
 def unregister():
