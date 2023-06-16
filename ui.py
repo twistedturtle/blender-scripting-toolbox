@@ -1,16 +1,7 @@
 
 import bpy
 import sys
-
-
-addon_name = "strack"
-
-# Get list of modules
-d = {}
-for m in sys.modules:
-	if m.startswith(addon_name):
-		d[m] = sys.modules[m]
-		print(m)
+from . import strack
 
 
 def get_active_text():
@@ -65,7 +56,7 @@ class TEXTEDITOR_PT_strack(bpy.types.Panel):
 			self.layout.prop(at.strack, "keep", text="Keep (per Text)")
 
 
-		self.layout.operator(d[f"{addon_name}.strack"].runScriptOperator.bl_idname,
+		self.layout.operator(strack.runScriptOperator.bl_idname,
 				text="Run Script", icon='PLUGIN')
 
 
