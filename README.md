@@ -26,6 +26,14 @@ Keep - Keep the objects from the last run of this script. This is per script.
 When running the script manually, you need to use the custom Run Script operator or the features won't work.
 
 
+The script will only be run if at least one of these criteria are met:
+
+
+1. One of the first 30 lines starts with an import statement, eg `import math`, `from mathutils import Matrix`, etc
+2. If external, the filename ends in `.py`.
+
+
+
 ### Install
 
 Download the .zip file from the `Code` button above. Use the Install button in Blender's addon preferences.

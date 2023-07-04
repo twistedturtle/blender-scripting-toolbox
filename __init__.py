@@ -1,7 +1,7 @@
 bl_info = {
 	"name": "Scripting Toolbox",
 	"author": "twistedturtle",
-	"version": (0, 1, 0),
+	"version": (0, 1, 1),
 	"blender": (3, 5, 1),
 	"location": "Text Editor -> Sidebar",
 	"description": "A few simple tools for easier scripting",

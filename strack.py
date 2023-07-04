@@ -1,9 +1,11 @@
+import os
+import re
 import bpy
 import sys
-from pathlib import Path
 import traceback
-import os
 import subprocess
+from pathlib import Path
+from itertools import islice
 
 # Python module to redirect the sys.stdout
 from contextlib import redirect_stdout
@@ -15,6 +17,7 @@ interval = 1
 
 warn = "\033[38;5;196m"
 reset = "\033[0m"
+
 
 
 def update_text(text, path):
@@ -143,7 +146,51 @@ def get_external_texts():
 			t.filepath = texts[t.name].filepath
 
 
+# Python detection
+##################
+
+# import statements are usually among the first statements we come to
+# if we only check for correct syntax
+# there are several other languages that could match
+# though they're unlikely to be found within blender
+# If we check for blender module imports
+# we can almost guarantee that we have a python script
+# as other languages are unlikely to have the same modules
+
+# stick with the simple method for now (less restrictions
+# on the script), see how it goes
+pattern = re.compile(f"import \w*|from \w* import \w*")
+nlines = 30
+
+def isPython(at):
+	if at.filepath:
+		if at.filepath.endswith(".py"):
+			return True
+
+		with open(at.filepath) as f:
+			head = list(islice(f, nlines))
+
+	else:
+		head = []
+		count = 0
+		for line in at.lines:
+			head.append(line.body)
+			count += 1
+			if count >= nlines:
+				break
+
+	for line in head:
+		if pattern.match(line):
+			return True
+	return False
+
+
+#########################################################
+
 def poll_file():
+	if not bpy.context.scene.strack.track:
+		return interval
+
 	if not (ed := get_active_editor()):
 		return interval
 
@@ -158,8 +205,6 @@ def poll_file():
 		entry.name = at.name
 		entry.filepath = at.filepath
 
-	if not bpy.context.scene.strack.track:
-		return interval
 
 	if file.exists():
 		if (mtime := get_mtime(file)) != float(at.strack.mtime):
@@ -167,7 +212,9 @@ def poll_file():
 			update_text(at, file)
 			ed.tag_redraw()
 			if bpy.context.scene.strack.autorun:
-				run_script(at)
+				# Ignore non-python files
+				if isPython(at):
+					run_script(at)
 	return interval
 
 
@@ -190,7 +237,9 @@ class runScriptOperator(bpy.types.Operator):
 			return {"CANCELLED"}
 
 		at = ed.spaces.active.text
-		run_script(at)
+		# Ignore non-python files
+		if isPython(at):
+			run_script(at)
 
 		return {'FINISHED'}
 
