@@ -111,9 +111,8 @@ def _run_script(at):
 
 def run_script(at):
 	sct = bpy.context.scene.strack
-	st = bpy.context.scene.strack
 
-	clear(console=st.clear, banner=st.banner)
+	clear(console=sct.clear, banner=sct.banner)
 
 	if at.strack.autotrack:
 		objs = [ obj for obj in bpy.data.objects ]
@@ -163,6 +162,9 @@ pattern = re.compile(f"import \w*|from \w* import \w*")
 nlines = 30
 
 def isPython(at):
+	if at.name.endswith(".py"):
+		return True
+
 	if at.filepath:
 		if at.filepath.endswith(".py"):
 			return True

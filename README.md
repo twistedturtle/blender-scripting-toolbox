@@ -31,6 +31,7 @@ The script will only be run if at least one of these criteria are met:
 
 1. One of the first 30 lines starts with an import statement, eg `import math`, `from mathutils import Matrix`, etc
 2. If external, the filename ends in `.py`.
+3. If the text name ends in `.py`.
 
 
 
