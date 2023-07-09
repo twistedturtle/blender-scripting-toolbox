@@ -42,7 +42,6 @@ def get_active_editor():
 def print_exception(name, e):
 	print(f"{warn}Exception in {name}:{reset} {e}\n")
 	print(traceback.format_exc())
-	print("Still running")
 
 
 def cls(banner=False):
