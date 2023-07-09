@@ -3,9 +3,9 @@
 Provides a few simple tools for easier scripting within blender. The controls are located in the sidebar for the text editor. In addition to the below, it also stores the filepaths to any external scripts in the .blend file, so they're remembered when you re-open the file.
 
 #### Console Ouput
-System Console - Output to the terminal blender was started from.
+System Console - Enable/diable output to the terminal blender was started from.
 
-Python Console - Output to the python console in the Scripting tab.
+Python Console - Enable/Diable output to the python console in the Scripting tab.
 
 Clear Python Console - Clears the python console before running the script.
 
@@ -25,13 +25,12 @@ Keep - Keep the objects from the last run of this script. This is per script.
 #### Run Script
 When running the script manually, you need to use the custom Run Script operator or the features won't work.
 
-
 The script will only be run if at least one of these criteria are met:
 
-
 1. One of the first 30 lines starts with an import statement, eg `import math`, `from mathutils import Matrix`, etc
-2. If external, the filename ends in `.py`.
-3. If the text name ends in `.py`.
+2. If the text name ends in `.py`.
+3. If external, the filename ends in `.py`.
+
 
 
 
