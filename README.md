@@ -3,9 +3,9 @@
 Provides a few simple tools for easier scripting within blender. The controls are located in the sidebar for the text editor. In addition to the below, it also stores the filepaths to any external scripts in the .blend file, so they're remembered when you re-open the file.
 
 #### Console Ouput
-System Console - Enable/diable output to the terminal blender was started from.
+System Console - Enable/disable output to the terminal blender was started from.
 
-Python Console - Enable/Diable output to the python console in the Scripting tab.
+Python Console - Enable/disable output to the python console in the Scripting tab.
 
 Clear Python Console - Clears the python console before running the script.
 
